@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Learning</title>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- <script>
+            const heading = document.createElement("h1");
+            heading.innerHTML = "Hello world from Javascript!";
+
+            const root = document.getElementById( "root" );
+            root.appendChild( heading );
+    </script> -->
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- <script>
+            const heading = React.createElement( 'div' , {} , 'Hello React' );
+            const root = ReactDOM.createRoot( document.getElementById( "root") ) ;
+            root.render( heading );
+    </script> -->
+    <script src="App.js" ></script>
+
+
+
+<!-- 
+    Notes - 
+     Order matter of these JS files
+     Why crossorigin used
+     Can we write should write in the head?
+     If already something in div root then root.render will replace by parent
+
+     React is library because it can be apply for small portion of the page not frame work, which comes with lots of prebuild stuff
+
+     All others app need to create app  whereas react can be use only in small component like header only card etc
+     React is not full fledge
+
+     React.createElement is a object at the end of day.
+
+     
+
+
+-->
+</body>
+</html>
