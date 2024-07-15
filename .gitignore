@@ -1,1 +1,6 @@
 echo .DS_Store >> .gitignore
+/node_modules
+/dist
+.parcel-cache
+.DS_Store
+
