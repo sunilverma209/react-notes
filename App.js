@@ -1,114 +1,109 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-
-const heading = React.createElement('div' , { id: 'parent' } , 
-                [
-                    React.createElement('div' , { id: 'child' } , 
-                        [
-                            React.createElement( 'h2' , { className: 'subheading' } , 'Hello React World H2 : Sub Child Class ' ) ,
-                            React.createElement('h3' , { className: 'subheading' } , 'Hello React World H3 : Sub Child Class ' )
-                        ]
-                    ),
-                    React.createElement('div' , { id: 'child2' } , 
-                    [
-                        React.createElement( 'h2' , { className: 'subheading2' } , 'Hello React World H2 : Sub Child Class ' ) ,
-                        React.createElement('h3' , { className: 'subheading2' } , 'Hello React World H3 : Sub Child Class ' )
-                    ]
-                ),
-
-                ]
-) ;
-
-
-// const root = ReactDOM.createRoot( document.getElementById('root') );
-// if ( root && heading ) {
-//     root.render( heading );
-// }
+import React from "react";
+import ReactDOM from "react-dom/client"
 
 
 /**
- *  JSX
- *  https://react.dev/learn/writing-markup-with-jsx
- *  JSX looks like HTML, but under the hood it is transformed into plain JavaScript objects. You can’t return two objects from a function without wrapping them into an array. 
- *  This explains why you also can’t return two JSX tags without wrapping them into another tag or a Fragment.
- */
-
-
-const jsxheading = <h1>This is Heading From Heading</h1>; // Behind the seane its React Element
-
-console.log( jsxheading );
-
-const jsxheading2 = ( <h1>This is Heading From Heading</h1> ); // Behind the seane its React Element
-
-console.log( jsxheading2 );
-
-/**
- *  To create a component use Camel case and Start with capital letters
- *  Component should return JSX ==> JSX is eventualy React Element i.e Create root => and that React element is object => And we render that object HTML
- *  JSX code first get traspile before goes to browser, who is transpiling Parcel but is parcel doing no its Babel
- *  JSX => React.createElement => React.createElement ( object ) => HTMLElment render 
- *  JSX in single / Multipe line
- *  Single line JSX - const jsxheading = <h1>This is Heading From Heading</h1>;  
- *  But in Multiple line JSX we need to wrap in mandatory to wrap around bracket ()
- *  const jsxheading = ( <h1>This is Heading From Heading</h1> ); // This is valid JSX but not required ()
- *   
- */
-
-
-const jsxheadingmultipleline = (
-        <h1 className='jsx-multipleline' tabIndex="5">This is Heading From Heading</h1> ); // Behind the seane its React Element
-
-console.log( jsxheading );
-
-
-
-/**
- *  Components 
- *  Two types of componetns 
- *  - Class based components - Old way
- *  - Functional components - New Way expect legacy project
- */
-
-// const TitleComponent = function {
-//     return (<h2>This is heading component</h2>)
-// }
-
-/**
+ *  Header
+ *    -Logo
+ *    -Nav Items
  * 
- * React componnent is also a Javascript function which return react elemnt it becomes React component
- * In one line we could skip return as well skip curly braces 
- */
-
-const fn1 = () => true;
-
-const fn2 = () => {
-    return ture 
-}
-
-
-/**
- * 
- * Both fn1 , fn2 are same 
+ *  Body
+ *    -Search
+ *    -ResturantContainer
+ *    -- ResturantCard
+ *  Footer
+ *    -Address
+ *    -Contact
  */
 
 
-const HeadingComponentSingleLine = () => <span>This is heading component Single Line</span>; // This component withou return and curly braces
-
-const HeadingComponent = () => {
-    return (<h2>This is heading component <HeadingComponentSingleLine /> </h2>)
+const Header = () => {
+     return (
+        <div className="header">
+            <div className="header__logo">Image</div>
+            <div className="header__navitems">
+                <ul>
+                    <li>Home</li>
+                    <li>About Us</li>
+                    <li>Contact US</li>
+                    <li>Cart</li>
+                </ul>
+            </div>
+        </div>
+     )
 }
 
-// Comoonent using function its same without using arrow function but we will be using arrow function
-const NewTitle = function () {
-    return (<h2>This is NewTitle component <HeadingComponentSingleLine /> </h2>)
+
+const ResturantCard = ( props ) => {
+    console.log(props);
+    // This prop is just a Javascript Object 
+
+    return(
+        <div className="resturant-card">
+            <div className="resturant-card__inner">
+                <h3>{props.resName}</h3>
+                <p>{props.cusines}</p>
+            </div>
+        </div>
+    )
 }
 
-/**
- * Component composition 
- * Calling one component in another another component
- */
+// Destructing of props
+// Destrucing in the fly
+const ResturantCard_ = ( {resName , cusines } ) => {
+    console.log(props);
+    // This prop is just a Javascript Object 
 
-const root = ReactDOM.createRoot( document.getElementById('root') );
-if ( root && jsxheading ) {
-    root.render( <NewTitle/> );
+
+    // or 
+    // const {resName , cusines } = props; // These are just destrucing 
+
+
+    return(
+        <div className="resturant-card">
+            <div className="resturant-card__inner">
+                <h3>{props.resName}</h3>
+                <p>{props.cusines}</p>
+            </div>
+        </div>
+    )
 }
+
+
+// Props - Is short form of property
+// Functional component in the end is Javascript function.
+// Similay, Props are just argumnets of functions.
+// Passing props is just pass
+
+const Body = () => {
+    return(
+        <div className="body">
+            <div className="body__search">Search</div>
+            <div className="body__resturants">
+                <ResturantCard resName="Meghana Foods" cusines="Briyani, North India, Asian" />
+                <ResturantCard resName="KFC" cusines="Burger, Fast Food"/>
+            </div>
+        </div>
+    )
+}
+
+/* Here we did component composition */
+
+const AppLayout = () => {
+    return(
+        <div className="app">
+            <Header/>
+            <Body />
+        </div>
+    )
+}
+
+
+// Config Driven UI ( System Design )
+// Like offers different in Location , Banglore etc 
+// This is data driven by data 
+// Backend API/Controlling UI is basis is driven by data
+//
+
+const root = ReactDOM.createRoot( document.getElementById("root") );
+root.render( <AppLayout/> );
