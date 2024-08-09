@@ -1,6 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom/client"
-
+import ReactDOM from "react-dom/client";
+import User from "./src/components/User";
+import UserClass from "./src/components/UserClass";
 
 /**
  *  Header
@@ -94,6 +95,8 @@ const AppLayout = () => {
         <div className="app">
             <Header/>
             <Body />
+            <User name={ "Sunil Verma - function "}/>
+            <UserClass name={ "Sunil Verma - class "} />
         </div>
     )
 }

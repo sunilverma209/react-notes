@@ -10,3 +10,10 @@ body {
     padding: 10px;
     text-align: center;
 }
+
+.user-card {
+    padding: 15px;
+    background-color: #ccc;
+    max-width: 300px;
+    color: #000;
+}
